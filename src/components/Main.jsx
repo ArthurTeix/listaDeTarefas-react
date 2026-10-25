@@ -1,4 +1,8 @@
 import { Component } from "react";
+
+// form
+import { FaPlus } from "react-icons/fa";
+
 import "./Main.css";
 export default class Main extends Component {
   state = {
@@ -24,7 +28,9 @@ export default class Main extends Component {
         <form action="#">
           <input type="text" onChange={this.handleChange} />{" "}
           {/* onChange é usado para capturar eventos, e hancleChange é um nome padrão sobre como lidar com essas alterações */}
-          <button type="submit">Enviar</button>
+          <button type="submit">
+            <FaPlus/>
+          </button>
         </form>
       </div>
     );
