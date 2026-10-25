@@ -2,7 +2,7 @@
   background-color: #fff;
   padding: 30px;
   margin: 50px auto;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.8);
 }
@@ -39,4 +39,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tarefas {
+  margin-top: 30px;
+}
+
+.tarefas li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  transition: all 300ms;
+}
+
+.tarefas li:hover {
+  color: white;
+  background-color: #005c80;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.8);
+}
+
+.tarefas li .edit {
+  margin-right: 15px;
+  color: #51c5de;
+  cursor: pointer;
+}
+
+.tarefas li .delete {
+  color: #e02121;
+  cursor: pointer;
 }
