@@ -16,15 +16,15 @@ export default class Main extends Component {
     const { tarefas } = this.state;
     let { novaTarefa } = this.state;
 
-    novaTarefa = novaTarefa.trim() // elimina espaços desnecessários
+    novaTarefa = novaTarefa.trim(); // elimina espaços desnecessários
 
     if (tarefas.indexOf(novaTarefa) !== -1) return;
 
     const novasTarefas = [...tarefas];
 
     this.setState({
-      tarefas: [...novasTarefas, novaTarefa]
-    })
+      tarefas: [...novasTarefas, novaTarefa],
+    });
   };
 
   handleChange = (e) => {
@@ -35,6 +35,22 @@ export default class Main extends Component {
       novaTarefa: e.target.value,
     });
   };
+
+  handleEdit = (e, index) => {
+    console.log("Edit", index);
+  };
+
+  handleDelete = (e, index) => {
+    const { tarefas } = this.state;
+    const novasTarefas = [...tarefas];
+
+    novasTarefas.splice(index, 1); // no index, remova 1 elemento
+
+    this.setState({
+      tarefas: [...novasTarefas]
+    })
+  };
+
   render() {
     const { novaTarefa, tarefas } = this.state;
 
@@ -51,12 +67,19 @@ export default class Main extends Component {
           </button>
         </form>
         <ul className="tarefas">
-          {tarefas.map((tarefa) => (
+          {tarefas.map((tarefa, index) => (
             <li key={tarefa}>
               {tarefa}
               <span>
-                <FaEdit className="edit" />
-                <FaWindowClose className="delete" />
+                <FaEdit
+                  onClick={(e) => this.handleEdit(e, index)}
+                  className="edit"
+                />
+
+                <FaWindowClose
+                  onClick={(e) => this.handleDelete(e, index)}
+                  className="delete"
+                />
               </span>
             </li> // key é necessário pois ajuda o react a se encontrar, e para ser único, é apenas cada tarefa ser sua key
           ))}
