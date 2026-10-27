@@ -44,10 +44,10 @@ export default class Main extends Component {
           {tarefas.map(tarefa => (
             <li key={tarefa}>
               {tarefa}
-              <div>
+              <span>
                 <FaEdit className="edit"/>
                 <FaWindowClose className="delete"/>
-              </div>
+              </span>
             </li> // key é necessário pois ajuda o react a se encontrar, e para ser único, é apenas cada tarefa ser sua key
           ))}
         </ul>
