@@ -1,7 +1,6 @@
 import { Component } from "react";
 
-// form
-import { FaPlus } from "react-icons/fa";
+
 import { FaEdit, FaWindowClose } from "react-icons/fa";
 
 import "./Main.css";
@@ -92,13 +91,7 @@ export default class Main extends Component {
         {" "}
         {/* Diferente do 'class' em html, em jsx o correto é 'className' */}
         <h1>Lista de Tarefas</h1>
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input type="text" onChange={this.handleChange} value={novaTarefa} />
-          {/* onChange é usado para capturar eventos, e hancleChange é um nome padrão sobre como lidar com essas alterações */}
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
+
         <ul className="tarefas">
           {tarefas.map((tarefa, index) => (
             <li key={tarefa}>
