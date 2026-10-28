@@ -1,4 +1,5 @@
 import { FaPlus } from "react-icons/fa";
+import "./Form.css"
 
 export default function Form() {
   return(
