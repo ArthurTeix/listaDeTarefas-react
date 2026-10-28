@@ -12,6 +12,24 @@ export default class Main extends Component {
     index: -1,
   };
 
+  componentDidMount() {
+    const tarefas = JSON.parse(localStorage.getItem("tarefas"));
+
+    if (!tarefas) return
+
+    this.setState({ tarefas })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // me permite salvar o valor anterior que estava
+    const { tarefas } = this.state;
+
+    if (tarefas === prevState.tarefas) return;
+
+    // salva minhas tarefas no localStorage
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { tarefas, index } = this.state; // <- adicionou o index aqui
@@ -51,8 +69,8 @@ export default class Main extends Component {
 
     this.setState({
       index,
-      novaTarefa: tarefas[index]
-    })
+      novaTarefa: tarefas[index],
+    });
   };
 
   handleDelete = (e, index) => {
@@ -62,8 +80,8 @@ export default class Main extends Component {
     novasTarefas.splice(index, 1); // no index, remova 1 elemento
 
     this.setState({
-      tarefas: [...novasTarefas]
-    })
+      tarefas: [...novasTarefas],
+    });
   };
 
   render() {
