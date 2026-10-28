@@ -1,7 +1,8 @@
 import { Component } from "react";
 
-
 import { FaEdit, FaWindowClose } from "react-icons/fa";
+
+import Form from "./Form";
 
 import "./Main.css";
 export default class Main extends Component {
@@ -14,9 +15,9 @@ export default class Main extends Component {
   componentDidMount() {
     const tarefas = JSON.parse(localStorage.getItem("tarefas"));
 
-    if (!tarefas) return
+    if (!tarefas) return;
 
-    this.setState({ tarefas })
+    this.setState({ tarefas });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -91,6 +92,12 @@ export default class Main extends Component {
         {" "}
         {/* Diferente do 'class' em html, em jsx o correto é 'className' */}
         <h1>Lista de Tarefas</h1>
+
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
 
         <ul className="tarefas">
           {tarefas.map((tarefa, index) => (
