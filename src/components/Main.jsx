@@ -1,8 +1,7 @@
 import { Component } from "react";
 
-import { FaEdit, FaWindowClose } from "react-icons/fa";
-
 import Form from "./Form";
+import Tasks from "./Tasks";
 
 import "./Main.css";
 export default class Main extends Component {
@@ -99,24 +98,12 @@ export default class Main extends Component {
           novaTarefa={novaTarefa}
         />
 
-        <ul className="tarefas">
-          {tarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <span>
-                <FaEdit
-                  onClick={(e) => this.handleEdit(e, index)}
-                  className="edit"
-                />
+        <Tasks
+          tarefas={tarefas}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
 
-                <FaWindowClose
-                  onClick={(e) => this.handleDelete(e, index)}
-                  className="delete"
-                />
-              </span>
-            </li> // key é necessário pois ajuda o react a se encontrar, e para ser único, é apenas cada tarefa ser sua key
-          ))}
-        </ul>
       </div>
     );
   }
